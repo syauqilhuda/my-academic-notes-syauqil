@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Academic Notes Syauqil</title>
+    <meta
+      name="description"
+      content="My Academic Notes adalah media dokumentasi rangkuman materi dan makalah mahasiswa."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar container">
+        <div class="brand" data-section="home">
+          <div class="brand-mark">UQIL</div>
+          <span>My Academic Notes</span>
+        </div>
+
+        <button
+          class="menu-toggle"
+          aria-label="Buka menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-actions">
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Ganti tema"
+            title="Ganti tema"
+          >
+            <span class="theme-icon" aria-hidden="true">
+              <svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4.2"></circle>
+                <g stroke-linecap="round">
+                  <path
+                    d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"
+                  ></path>
+                </g>
+              </svg>
+
+              <svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M20.4 14.7A8 8 0 0 1 9.3 3.6a8 8 0 1 0 11.1 11.1Z"
+                ></path>
+              </svg>
+            </span>
+          </button>
+
+          <div class="nav-menu">
+            <button class="nav-link active" data-section="home">Beranda</button>
+            <button class="nav-link" data-section="materi">Materi</button>
+            <button class="nav-link" data-section="makalah">Makalah</button>
+            <button class="nav-link" data-section="about">Tentang</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="page-section active">
+        <div class="container hero">
+          <div class="hero-text">
+            <p class="eyebrow">Media Dokumentasi Akademik</p>
+            <h1>My Academic Notes</h1>
+            <p class="lead">
+              Media dokumentasi akademik untuk menyimpan rangkuman materi,
+              makalah, dan hasil belajar selama perkuliahan.
+            </p>
+            <div class="hero-actions">
+              <button class="primary-btn" data-section="materi">
+                Lihat Materi
+              </button>
+              <button class="secondary-btn" data-section="makalah">
+                Lihat Makalah
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <div class="stat-grid">
+              <div class="stat-card">
+                <span id="stat-materi">0</span>
+                <small>Materi</small>
+              </div>
+              <div class="stat-card">
+                <span id="stat-makalah">0</span>
+                <small>Makalah</small>
+              </div>
+              <div class="stat-card">
+                <span id="stat-matkul">0</span>
+                <small>Mata Kuliah</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container featured-section">
+          <div class="section-heading">
+            <h2>Materi Terbaru</h2>
+            <button class="text-link" data-section="materi">Lihat semua</button>
+          </div>
+          <div id="recent-materi" class="card-grid"></div>
+        </div>
+
+        <div class="container featured-section">
+          <div class="section-heading">
+            <h2>Makalah Terbaru</h2>
+            <button class="text-link" data-section="makalah">
+              Lihat semua
+            </button>
+          </div>
+          <div id="recent-makalah" class="card-grid"></div>
+        </div>
+      </section>
+
+      <section id="materi" class="page-section">
+        <div class="container section-wrap">
+          <div class="section-topbar">
+            <div>
+              <p class="eyebrow">Rangkuman Kuliah</p>
+              <h2>Daftar Materi</h2>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <input
+              type="search"
+              id="search-materi"
+              placeholder="Cari materi, mata kuliah, atau deskripsi..."
+              aria-label="Cari materi"
+            />
+            <select
+              id="filter-materi"
+              aria-label="Filter materi berdasarkan mata kuliah"
+            >
+              <option value="Semua Mata Kuliah">Semua Mata Kuliah</option>
+            </select>
+          </div>
+
+          <div id="materi-list" class="card-grid"></div>
+          <div id="materi-empty" class="empty-state hidden">
+            <h3>Materi Tidak Ditemukan</h3>
+            <p>Coba kata kunci lain atau ubah filter mata kuliah.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="detail-materi" class="page-section">
+        <div class="container detail-container">
+          <button class="back-btn" data-target="materi">
+            ← Kembali ke Materi
+          </button>
+          <article id="materi-detail" class="detail-content"></article>
+        </div>
+      </section>
+
+      <section id="makalah" class="page-section">
+        <div class="container section-wrap">
+          <div class="section-topbar">
+            <div>
+              <p class="eyebrow">Karya Tulis</p>
+              <h2>Daftar Makalah</h2>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <input
+              type="search"
+              id="search-makalah"
+              placeholder="Cari makalah, mata kuliah, atau deskripsi..."
+              aria-label="Cari makalah"
+            />
+            <select
+              id="filter-makalah"
+              aria-label="Filter makalah berdasarkan mata kuliah"
+            >
+              <option value="Semua Mata Kuliah">Semua Mata Kuliah</option>
+            </select>
+          </div>
+
+          <div id="makalah-list" class="card-grid"></div>
+          <div id="makalah-empty" class="empty-state hidden">
+            <h3>Makalah Tidak Ditemukan</h3>
+            <p>Coba kata kunci lain atau ubah filter mata kuliah.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="detail-makalah" class="page-section">
+        <div class="container detail-container">
+          <button class="back-btn" data-target="makalah">
+            ← Kembali ke Makalah
+          </button>
+          <article id="makalah-detail" class="detail-content"></article>
+        </div>
+      </section>
+
+      <section id="about" class="page-section">
+        <div class="container about-box">
+          <div class="about-card">
+            <p class="eyebrow">Tentang Saya</p>
+            <h2>Mochamad Syauqil Huda</h2>
+            <p>
+              Saya merupakan Mahasiswa Teknik Informatika Di Universitas
+              Pamulang yang sedang mempelajari pengembangan website dan
+              teknologi informasi. Saya percaya bahwa dokumentasi akademik perlu
+              dibuat dengan cara yang rapi, mudah dibaca, dan bermanfaat untuk
+              proses belajar.
+            </p>
+            <p>
+              Website ini dibuat sebagai media dokumentasi rangkuman materi,
+              makalah, tugas kuliah, serta hasil belajar selama perkuliahan.
+              Dengan website ini, saya dapat menyimpan catatan dan karya ilmiah
+              secara tertata dan mudah diakses kapan saja.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <h3>My Academic Notes</h3>
+          <p>Media dokumentasi materi dan tugas perkuliahan.</p>
+        </div>
+        <p>© 2026 Mochamad Syauqil Huda</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
